@@ -5,7 +5,7 @@ import react from "@vitejs/plugin-react";
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  // base: "/jensecool/",
+  base: "/jensecool/",
   assetsInclude: ["**/*.glb"], // Voeg dit toe om GLB-bestanden op te nemen
   server: {
     fs: {

@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://Jense02.github.io/",
+  "homepage": "https://Jense02.github.io/jensecool/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
