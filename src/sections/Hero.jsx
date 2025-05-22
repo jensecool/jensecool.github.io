@@ -58,7 +58,7 @@ const Hero = () => {
             </div>
 
             <Button
-              text="Learn to know me"
+              text="Get to know me"
               className="md:w-80 md:h-60 w-60 h-12"
               id="counter"
             />
