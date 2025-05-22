@@ -10,7 +10,7 @@ const Particles = ({ count = 200 }) => {
       temp.push({
         position: [
           (Math.random() - 0.5) * 60,
-          Math.random() * 50 + 5, // higher starting point
+          Math.random() * 50 + 10, // higher starting point
           (Math.random() - 0.5) * 60,
         ],
         speed: 0.005 + Math.random() * 0.01,
