@@ -12,15 +12,41 @@ const Contact = () => {
     email: "",
     message: "",
   });
+  const [messageStatus, setMessageStatus] = useState(null);
+  const [messageText, setMessageText] = useState("");
+  const [emailError, setEmailError] = useState("");
+
+  // Basic email validation function
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email) {
+      return "Email is required.";
+    }
+    if (!emailRegex.test(email)) {
+      return "Please enter a valid email address (e.g., example@domain.com).";
+    }
+    return "";
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm({ ...form, [name]: value });
+
+    if (name === "email") {
+      setEmailError(validateEmail(value));
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true); // Show loading state
+
+    const currentEmailError = validateEmail(form.email);
+    if (currentEmailError) {
+      setEmailError(currentEmailError);
+      return;
+    }
+
+    setLoading(true);
 
     try {
       await emailjs.sendForm(
@@ -31,12 +57,33 @@ const Contact = () => {
       );
 
       // Reset form and stop loading
-      setForm({ name: "", email: "", message: "" });
+      setMessageStatus("success");
+      setMessageText("Your message has been sent successfully!");
+      setForm({ name: "", email: "", message: "" }); // Reset form
     } catch (error) {
-      console.error("EmailJS Error:", error); // Optional: show toast
+      setMessageStatus("error");
+      setMessageText("Failed to send message. Please try again later.");
     } finally {
-      setLoading(false); // Always stop loading, even on error
+      setLoading(false);
+      setTimeout(() => {
+        setMessageStatus(null);
+        setMessageText("");
+      }, 5000);
     }
+  };
+
+  // Determine button text based on loading and message status
+  const getButtonText = () => {
+    if (loading) {
+      return "Sending...";
+    }
+    if (messageStatus === "success") {
+      return "Message Sent!";
+    }
+    if (messageStatus === "error") {
+      return "Message Failed!";
+    }
+    return "Send Message";
   };
 
   return (
@@ -75,8 +122,14 @@ const Contact = () => {
                     name="email"
                     value={form.email}
                     onChange={handleChange}
+                    onBlur={() => setEmailError(validateEmail(form.email))}
                     placeholder="What’s your email address?"
                     required
+                    className={`rounded-md p-2 border ${
+                      emailError ? "border-red-500" : "border-gray-300"
+                    } focus:outline-none focus:ring-2 ${
+                      emailError ? "focus:ring-red-500" : "focus:ring-blue-500"
+                    }`}
                   />
                 </div>
 
@@ -92,13 +145,10 @@ const Contact = () => {
                     required
                   />
                 </div>
-
-                <button type="submit">
+                <button type="submit" disabled={loading}>
                   <div className="cta-button group">
                     <div className="bg-circle" />
-                    <p className="text">
-                      {loading ? "Sending..." : "Send Message"}
-                    </p>
+                    <p className="text">{getButtonText()} </p>
                     <div className="arrow-wrapper">
                       <img src="/images/arrow-down.svg" alt="arrow" />
                     </div>
