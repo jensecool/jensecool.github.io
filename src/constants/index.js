@@ -25,7 +25,7 @@ const words = [
 const counterItems = [
   { value: 22, suffix: "+", label: "Years Old" },
   { value: 15, suffix: "+", label: "Years Scouting" },
-  { value: 4, suffix: "+", label: "Languages Spoken" },
+  { value: 3, suffix: "+", label: "Languages Spoken" },
   { value: 2026, suffix: "%", label: "Graduation Year" },
 ];
 
