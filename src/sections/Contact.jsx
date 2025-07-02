@@ -89,10 +89,9 @@ const Contact = () => {
   return (
     <section id="contact" className="flex-center section-padding">
       <div className="w-full h-full md:px-10 px-5">
-        <TitleHeader
-          title="Get in Touch – Let’s Connect"
-          sub="Have questions or ideas? Let’s talk!"
-        />
+        <h2 className="text-white font-semibold text-5xl md:text-6xl lg:text-6xl leading-tight mb-16 text-center">
+          Get In Touch!
+        </h2>
         <div className="grid-12-cols mt-16">
           <div className="xl:col-span-5">
             <div className="flex-center card-border rounded-xl p-10">

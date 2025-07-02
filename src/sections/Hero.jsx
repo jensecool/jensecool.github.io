@@ -5,6 +5,7 @@ import AnimatedCounter from "../components/AnimatedCounter";
 import Button from "../components/Button";
 import { words } from "../constants";
 import HeroExperience from "../components/models/hero_models/HeroExperience";
+import AboutMeSection from "./AboutMeSection";
 
 const produceSpans = (text, animationClass) => {
   return text.split("").map((letter, index) => (
@@ -38,9 +39,9 @@ const Hero = () => {
         <header className="flex flex-col justify-center md:w-full w-screen md:px-20 px-5">
           <div className="flex flex-col gap-7">
             <div className="hero-text">
-              <h1>Jense Cool</h1>
-              <h1>Student Applied</h1>
-              <h1>
+              <h1 className="hero-name">Jense Cool</h1>
+              {/* <h1>Student Applied</h1> */}
+              <h1 className="hero-discipline-rotate">
                 <span className="text-rotate-container">
                   {/* Eerste roterende tekstregel */}
                   <span className="text-rotate-item" aria-label={words[0].text}>
@@ -56,10 +57,9 @@ const Hero = () => {
                 <br />
               </h1>
             </div>
-
             <Button
               text="Get to know me"
-              className="md:w-80 md:h-60 w-60 h-12"
+              className="md:w-80 md:h-60 w-60 h-12 mt-5 "
               id="counter"
             />
           </div>
@@ -74,6 +74,7 @@ const Hero = () => {
       </div>
 
       <AnimatedCounter />
+      <AboutMeSection />
     </section>
   );
 };

@@ -36,6 +36,40 @@ section {
   .flex-col-center {
     @apply flex flex-col justify-center items-center;
   }
+
+  /* Custom scrollbar styling */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px; /* Breedte van de scrollbar */
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent; /* Maak het 'track' gedeelte transparant of een heel donkere kleur */
+    border-radius: 10px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #4a4a5a; /* Kleur van de scrollbar duim (een donkergrijze tint) */
+    border-radius: 10px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #6a6a7a; /* Lichtere kleur bij hover */
+  }
+
+  /* Voor Firefox, hoewel de controle minder is */
+  .custom-scrollbar {
+    scrollbar-width: thin; /* 'auto' of 'thin' */
+    scrollbar-color: #4a4a5a transparent; /* thumb color track color */
+  }
+}
+
+@layer utilities {
+  .flex-center {
+    @apply flex justify-center items-center;
+  }
+  .flex-col-center {
+    @apply flex flex-col justify-center items-center;
+  }
 }
 
 @layer components {
@@ -84,8 +118,20 @@ section {
     @apply relative z-10 xl:mt-20 mt-32 md:h-dvh h-[80vh] flex xl:items-center items-start justify-center;
   }
 
+  .aboutme-layout {
+    @apply relative flex xl:items-center items-start justify-center;
+  }
+
+  .hero-name {
+    @apply md:text-[100px] text-[40px] font-bold; /* Voor "Jense Cool" */
+  }
+
+  .hero-discipline-rotate {
+    @apply md:text-[70px] text-[35px] font-semibold mt-1; /* Voor de roterende tekst */
+  }
+
   .hero-text {
-    @apply flex flex-col justify-center md:text-[60px] text-[30px] font-semibold relative z-10 pointer-events-none;
+    @apply flex flex-col justify-center  relative z-10 pointer-events-none;
     img {
       @apply size-8 md:size-10 object-contain;
     }
@@ -401,6 +447,7 @@ section {
   white-space: nowrap;
   backface-visibility: hidden; /* Belangrijk voor 3D-transformaties */
   color: white; /* Standaard kleur voor de tekst, kan overschreven worden */
+  font-weight: 600;
 }
 
 /* Custom classes voor de individuele letters binnen de roterende tekst */

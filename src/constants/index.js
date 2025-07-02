@@ -17,6 +17,27 @@ const navLinks = [
   // },
 ];
 
+const projectData = {
+  title: "Periskal Academy",
+  shortDescription:
+    "A full-stack digital learning platform to modernize training in the maritime sector, replacing traditional TeamViewer sessions with a user-friendly online system.",
+  longDescription: [
+    "In collaboration with Periskal and AP Hogeschool, my team and I developed Periskal Academy, a comprehensive full-stack digital learning platform. Its primary goal was to modernize and streamline training in the maritime sector. Our solution replaces outdated traditional TeamViewer sessions, offering a user-friendly online system for self-paced training modules, integrated exams, and efficient certification processes.",
+    "This project was a true full-stack endeavor, encompassing everything from database design and implementation to the user interface. We handled robust backend logic, efficient data management, and ensured a smooth, intuitive user experience. The collaboration aspect, working closely with industry partners and educational institutions, provided invaluable real-world project experience.",
+    "Our core tech stack for Periskal Academy included Angular and Bulma for a responsive and modern frontend, providing a dynamic and engaging learning environment. For the backend, we utilized Java Spring Boot, ensuring a powerful, secure, and scalable foundation for the platform's functionalities. This combination allowed us to build a robust system capable of handling complex training workflows and user data effectively.",
+    "Working on Periskal Academy was an incredible learning journey, offering deep insights into end-to-end development and the intricacies of bringing a large-scale application to life within a collaborative team setting. A huge shout-out to my teammates Mansur Sulejmanov, Matti Langbeen, and Adam Bakhmadov for their contributions as full-stack developers on this project. All data shown in screenshots is for testing purposes.",
+  ],
+  images: [
+    "/images/project/periskal_1.png",
+    "/images/project/periskal_2.png",
+    "/images/project/periskal_3.png",
+    "/images/project/periskal_4.png",
+    "/images/project/periskal_5.png",
+    "/images/project/periskal_6.png",
+    "/images/project/periskal_7.png",
+  ],
+};
+
 const words = [
   { text: "Computer Science", imgPath: "/images/ideas.svg" },
   { text: "Software development", imgPath: "/images/code.svg" },
@@ -24,9 +45,8 @@ const words = [
 
 const counterItems = [
   { value: 22, suffix: "+", label: "Years Old" },
-  { value: 15, suffix: "+", label: "Years Scouting" },
   { value: 3, suffix: "+", label: "Languages Spoken" },
-  { value: 2026, suffix: "%", label: "Graduation Year" },
+  { value: 2026, suffix: "", label: "Graduation Year" },
 ];
 
 const logoIconsList = [
@@ -266,4 +286,5 @@ export {
   techStackIcons,
   techStackImgs,
   navLinks,
+  projectData,
 };
