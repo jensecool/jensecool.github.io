@@ -1,47 +1,41 @@
+// src/components/GlowCard.jsx (Aangepast)
 import { useRef } from "react";
 
-const GlowCard = ({ card, index, children }) => {
-  // refs for all the cards
-  const cardRefs = useRef([]);
+const GlowCard = ({ children, className }) => {
+  // className toegevoegd om makkelijker te stylen
+  const cardRef = useRef(null); // useRef voor deze specifieke kaart
 
-  // when mouse moves over a card, rotate the glow effect
-  const handleMouseMove = (index) => (e) => {
-    // get the current card
-    const card = cardRefs.current[index];
+  // Wanneer de muis over de kaart beweegt, roteer het glow-effect
+  const handleMouseMove = (e) => {
+    const card = cardRef.current;
     if (!card) return;
 
-    // get the mouse position relative to the card
+    // Haal de muispositie op relatief aan de kaart
     const rect = card.getBoundingClientRect();
     const mouseX = e.clientX - rect.left - rect.width / 2;
     const mouseY = e.clientY - rect.top - rect.height / 2;
 
-    // calculate the angle from the center of the card to the mouse
+    // Bereken de hoek vanaf het midden van de kaart naar de muis
     let angle = Math.atan2(mouseY, mouseX) * (180 / Math.PI);
 
-    // adjust the angle so that it's between 0 and 360
+    // Pas de hoek aan zodat deze tussen 0 en 360 ligt
     angle = (angle + 360) % 360;
 
-    // set the angle as a CSS variable
+    // Stel de hoek in als een CSS-variabele
     card.style.setProperty("--start", angle + 60);
   };
 
-  // return the card component with the mouse move event
+  // We zullen een 'card' klasse toevoegen aan de children via className.
+  // De 'glow' div blijft hier, maar de children worden direct gerenderd.
   return (
     <div
-      ref={(el) => (cardRefs.current[index] = el)}
-      onMouseMove={handleMouseMove(index)}
-      className="card card-border timeline-card rounded-xl p-10 mb-5 break-inside-avoid-column"
+      ref={cardRef}
+      onMouseMove={handleMouseMove}
+      // De 'card' klasse en 'glow' div zijn essentieel voor het glow-effect uit index.css
+      className={`card ${className || ""}`} // Voeg hier de basis 'card' klasse toe
     >
       <div className="glow"></div>
-      <div className="flex items-center gap-1 mb-5">
-        {Array.from({ length: 5 }, (_, i) => (
-          <img key={i} src="/images/star.png" alt="star" className="size-5" />
-        ))}
-      </div>
-      <div className="mb-5">
-        <p className="text-white-50 text-lg">{card.review}</p>
-      </div>
-      {children}
+      {children} {/* Render de inhoud van de projectkaart hier */}
     </div>
   );
 };
