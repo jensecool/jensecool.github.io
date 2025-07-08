@@ -77,6 +77,33 @@ const logoIconsList = [
   {
     imgPath: "/images/logos/company-logo-14-bigger.png",
   },
+  {
+    imgPath: "/images/logos/company-logo-2.png",
+  },
+  {
+    imgPath: "/images/logos/company-logo-12-bigger.png",
+  },
+  {
+    imgPath: "/images/logos/company-logo-4.png",
+  },
+  {
+    imgPath: "/images/logos/company-logo-13-bigger.png",
+  },
+  {
+    imgPath: "/images/logos/company-logo-6.png",
+  },
+  {
+    imgPath: "/images/logos/company-logo-17-bigger.png",
+  },
+  {
+    imgPath: "/images/logos/company-logo-16-bigger.png",
+  },
+  {
+    imgPath: "/images/logos/company-logo-15-bigger.png",
+  },
+  {
+    imgPath: "/images/logos/company-logo-14-bigger.png",
+  },
 ];
 
 const abilities = [

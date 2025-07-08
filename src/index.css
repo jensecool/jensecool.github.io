@@ -281,7 +281,7 @@ section {
   }
 
   .marquee-item {
-    @apply md:w-40 w-32;
+    @apply md:w-50 w-32;
   }
 
   .timeline-wrapper {
@@ -537,21 +537,21 @@ section {
 .marquee-box {
   display: flex;
   align-items: center;
-  width: 200%;
+  width: fit-content;
   height: 100%;
   position: absolute;
   overflow: hidden;
-  animation: marquee 60s linear infinite;
+  animation: marquee 80s linear infinite;
 }
 .marquee-item {
-  float: left;
+  flex-shrink: 0;
 }
 @keyframes marquee {
-  0% {
-    left: 0;
+  from {
+    transform: translateX(0);
   }
-  100% {
-    left: -100%;
+  to {
+    transform: translateX(-50%);
   }
 }
 /* marquee end */
