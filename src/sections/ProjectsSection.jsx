@@ -48,7 +48,7 @@ const ProjectsSection = () => {
           {projectData.title}
         </h3>
         {/* Korte Beschrijving */}
-        <p className="text-white-50 text-lg leading-relaxed mb-6">
+        <p className="text-white-50 text-xl leading-relaxed mb-6">
           {projectData.shortDescription}
         </p>
         {/* Nieuwe flex container voor de longDescription en foto's */}
@@ -58,7 +58,7 @@ const ProjectsSection = () => {
           {/* Op mobiel neemt het de volledige breedte, op desktop de helft */}
           <div className="w-full md:w-1/2">
             {/* Scrollfunctie (max-h en overflow) verwijderd - tekst zal volledig uitklappen */}
-            <div className="text-white-50 text-base leading-relaxed pr-4">
+            <div className="text-white-50 text-lg leading-relaxed pr-4">
               {projectData.longDescription.map((paragraph, index) => (
                 <p key={index} className="mb-4 last:mb-0">
                   {paragraph}
