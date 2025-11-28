@@ -385,10 +385,12 @@ section {
   0%,
   40% {
     transform: translate3d(0, 0%, 0) rotateX(0deg);
+    opacity: 1;
   }
   60%,
   100% {
     transform: translate3d(0, -100%, 0) rotateX(-90deg);
+    opacity: 0;
   }
 }
 
@@ -396,10 +398,12 @@ section {
   0%,
   40% {
     transform: translate3d(0, 100%, 0) rotateX(-90deg);
+    opacity: 0;
   }
   60%,
   100% {
     transform: translate3d(0, 0%, 0) rotateX(0deg);
+    opacity: 1;
   }
 }
 
@@ -408,10 +412,12 @@ section {
   0%,
   40% {
     transform: translate3d(0, 0%, 0) rotateX(0deg);
+    opacity: 1;
   }
   60%,
   100% {
     transform: translate3d(0, -100%, 0) rotateX(-90deg);
+    opacity: 0;
   }
 }
 
@@ -419,10 +425,12 @@ section {
   0%,
   40% {
     transform: translate3d(0, 100%, 0) rotateX(-90deg);
+    opacity: 0;
   }
   60%,
   100% {
     transform: translate3d(0, 0%, 0) rotateX(0deg);
+    opacity: 1;
   }
 }
 
@@ -455,16 +463,18 @@ section {
   display: inline-block;
   transform-style: preserve-3d; /* Belangrijk voor 3D-transformaties */
   transform-origin: bottom;
+  will-change: transform, opacity; /* Optimalisatie voor animaties */
+  backface-visibility: hidden; /* Voorkomt dat de achterkant zichtbaar is tijdens rotatie */
   transition: 1s; /* Voor de animation-delay */
 }
 
 /* Specifieke animatie-klassen voor de letters */
 .text-rotate-span.animation-1 {
-  animation: textRotate1 6s infinite; /* Koppel de keyframe aan de animatie */
+  animation: textRotate1 6s infinite cubic-bezier(0.71, 0.03, 0.34, 1); /* Koppel de keyframe aan de animatie */
 }
 
 .text-rotate-span.animation-2 {
-  animation: textRotate2 6s infinite; /* Koppel de keyframe aan de animatie */
+  animation: textRotate2 6s infinite cubic-bezier(0.71, 0.03, 0.34, 1); /* Koppel de keyframe aan de animatie */
 }
 
 /**/

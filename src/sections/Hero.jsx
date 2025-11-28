@@ -1,6 +1,6 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-
+import { useMemo } from "react";
 import AnimatedCounter from "../components/AnimatedCounter";
 import Button from "../components/Button";
 import { words } from "../constants";
@@ -15,7 +15,7 @@ const produceSpans = (text, animationClass) => {
       className={`text-rotate-span ${animationClass}`}
       style={{
         animationDelay: `${index * 0.05}s`,
-        // De kleur is nu gedefinieerd in .text-rotate-item in index.css
+        willChange: "transform, opacity", // Optimalisatie voor animaties
       }}
     >
       {letter === " " ? "\u00A0" : letter}
@@ -24,11 +24,15 @@ const produceSpans = (text, animationClass) => {
 };
 
 const Hero = () => {
+
+  const firstLine = useMemo(() => produceSpans(words[0].text, "animation-1"), []);
+  const secondLine = useMemo(() => produceSpans(words[1].text, "animation-2"), []);
+
   useGSAP(() => {
     gsap.fromTo(
       ".hero-text h1",
       { y: 50, opacity: 0 },
-      { y: 0, opacity: 1, stagger: 0.2, duration: 1, ease: "power2.inOut" }
+      { y: 0, opacity: 1, stagger: 0.2, duration: 1, ease: "power2.inOut", delay: 0.5 }
     );
   });
 
@@ -45,12 +49,12 @@ const Hero = () => {
                 <span className="text-rotate-container">
                   {/* Eerste roterende tekstregel */}
                   <span className="text-rotate-item" aria-label={words[0].text}>
-                    {produceSpans(words[0].text, "animation-1")}{" "}
+                    {firstLine}
                     {/* Gebruik de custom animatieklasse */}
                   </span>
                   {/* Tweede roterende tekstregel - absoluut gepositioneerd over de eerste */}
                   <span className="text-rotate-item" aria-label={words[1].text}>
-                    {produceSpans(words[1].text, "animation-2")}{" "}
+                    {secondLine}
                     {/* Gebruik de custom animatieklasse */}
                   </span>
                 </span>

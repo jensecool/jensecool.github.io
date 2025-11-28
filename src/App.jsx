@@ -8,6 +8,7 @@ import Testimonials from "./sections/Testimonials";
 import Contact from "./sections/Contact";
 import Footer from "./sections/Footer";
 import ProjectsSection from "./sections/ProjectsSection";
+import { Loader } from "@react-three/drei";
 
 const App = () => {
   return (
@@ -23,6 +24,12 @@ const App = () => {
       {/* <Testimonials /> */}
       <Contact />
       <Footer />
+      <Loader 
+        containerStyles={{ backgroundColor: 'black' }} // Achtergrondkleur van laadscherm
+        innerStyles={{ backgroundColor: 'white', width: '50%' }} // Het balkje zelf
+        barStyles={{ backgroundColor: '#fff', height: '5px' }} // De voortgangskleur
+        dataInterpolation={(p) => `Loading ${p.toFixed(0)}%`} // De tekst
+      />
     </>
   );
 };
