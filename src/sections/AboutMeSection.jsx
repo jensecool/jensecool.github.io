@@ -43,7 +43,7 @@ const AboutMeSection = () => {
         <figure className="hidden md:flex md:w-[55%] lg:w-1/3 justify-center items-center">
           <div className="w-full h-full flex justify-center items-center p-4">
             <img
-              src="/images/jense-2.jpg"
+              src="/images/jense.jpg"
               alt="Jense Cool Profile Photo"
               className="rounded-xl object-cover w-full h-auto max-h-[70vh] shadow-lg"
             />
