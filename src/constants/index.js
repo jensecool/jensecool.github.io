@@ -44,8 +44,8 @@ const words = [
 ];
 
 const counterItems = [
-  { value: 22, suffix: "+", label: "Years Old" },
-  { value: 3, suffix: "+", label: "Languages Spoken" },
+  { value: 23, suffix: "+", label: "Years Old" },
+  { value: 2, suffix: "+", label: "Languages Spoken" },
   { value: 2026, suffix: "", label: "Graduation Year" },
 ];
 
