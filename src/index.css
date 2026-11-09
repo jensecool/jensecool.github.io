@@ -596,6 +596,7 @@ section {
   mask-composite: intersect;
   -webkit-mask-clip: padding-box, border-box;
   mask-clip: padding-box, border-box;
+  pointer-events: none;
   opacity: 0;
   transition: 0.5s ease;
 }
