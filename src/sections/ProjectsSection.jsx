@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { projectData } from "../constants"; // Zorg dat projectData geëxporteerd wordt in constants/index.js
-import ImageModal from "../components/ImageModal"; // Zorg dat dit pad klopt
-import GlowCard from "../components/GlowCard"; // Importeer de GlowCard component
+import { projectData, projectDataSecondary } from "../constants";
+import ImageModal from "../components/ImageModal";
+import GlowCard from "../components/GlowCard";
 
 const ProjectsSection = () => {
   // State voor de afbeeldingsmodaal (lightbox)
@@ -42,22 +42,15 @@ const ProjectsSection = () => {
       </h2>
 
       {/* Hoofdcontainer voor de projectkaart, nu breder en met flexbox voor inhoud op desktop */}
-      <GlowCard className="max-w-full xl:max-w-[90vw] w-full card-border pt-8 px-8 pb-14 rounded-xl relative z-10 mt-16 mb-40">
-        {/* Project Titel */}
+      <GlowCard className="max-w-full xl:max-w-[90vw] w-full card-border pt-8 px-8 pb-14 rounded-xl relative z-10 mt-16 mb-10">
         <h3 className="text-white text-3xl md:text-4xl font-semibold mb-4">
           {projectData.title}
         </h3>
-        {/* Korte Beschrijving */}
         <p className="text-white-50 text-xl leading-relaxed mb-6">
           {projectData.shortDescription}
         </p>
-        {/* Nieuwe flex container voor de longDescription en foto's */}
-        {/* Flex-col op mobiel, flex-row op desktop */}
         <div className="flex flex-col md:flex-row gap-10 mt-8">
-          {/* LEFT: Volledige uitleg (longDescription) */}
-          {/* Op mobiel neemt het de volledige breedte, op desktop de helft */}
           <div className="w-full md:w-1/2">
-            {/* Scrollfunctie (max-h en overflow) verwijderd - tekst zal volledig uitklappen */}
             <div className="text-white-50 text-lg leading-relaxed pr-4">
               {projectData.longDescription.map((paragraph, index) => (
                 <p key={index} className="mb-4 last:mb-0">
@@ -67,9 +60,6 @@ const ProjectsSection = () => {
             </div>
           </div>
 
-          {/* RIGHT: Fotocarrousel (groter) */}
-          {/* Op mobiel neemt het de volledige breedte, op desktop de helft */}
-          {/* Alleen tonen als er afbeeldingen zijn */}
           {projectData.images.length > 0 && (
             <div className="w-full md:w-1/2">
               <div className="relative w-full h-[400px] md:h-[500px] bg-black-100 rounded-lg flex items-center justify-center overflow-hidden">
@@ -83,14 +73,12 @@ const ProjectsSection = () => {
                 />
                 {projectData.images.length > 1 && (
                   <>
-                    {/* Vorige knop */}
                     <button
                       onClick={prevImage}
                       className="absolute left-4 bg-black-200 p-3 rounded-full text-white text-lg z-20 hover:bg-black-50 transition-colors"
                     >
                       &#8249;
                     </button>
-                    {/* Volgende knop */}
                     <button
                       onClick={nextImage}
                       className="absolute right-4 bg-black-200 p-3 rounded-full text-white text-lg z-20 hover:bg-black-50 transition-colors"
@@ -99,7 +87,6 @@ const ProjectsSection = () => {
                     </button>
                   </>
                 )}
-                {/* Paginatie bolletjes */}
                 <div className="absolute bottom-4 flex gap-2">
                   {projectData.images.map((_, index) => (
                     <span
@@ -114,11 +101,42 @@ const ProjectsSection = () => {
               </div>
             </div>
           )}
-        </div>{" "}
-        {/* Einde van de flex container voor longDescription en foto's */}
+        </div>
       </GlowCard>
 
-      {/* Modaal (lightbox) component */}
+      <GlowCard className="max-w-full xl:max-w-[90vw] w-full card-border pt-8 px-8 pb-14 rounded-xl relative z-10 mb-40">
+        <div className="flex flex-col md:flex-row md:items-start gap-8">
+          <div className="w-full md:w-2/3">
+            <h3 className="text-white text-3xl md:text-4xl font-semibold mb-4">
+              {projectDataSecondary.title}
+            </h3>
+            <p className="text-white-50 text-xl leading-relaxed mb-6">
+              {projectDataSecondary.shortDescription}
+            </p>
+            <div className="text-white-50 text-lg leading-relaxed">
+              {projectDataSecondary.longDescription.map((paragraph, index) => (
+                <p key={index} className="mb-4 last:mb-0">
+                  {paragraph}
+                </p>
+              ))}
+            </div>
+          </div>
+
+          {projectDataSecondary.websiteUrl && (
+            <div className="w-full md:w-1/3 flex md:justify-end items-start pt-2">
+              <a
+                href={projectDataSecondary.websiteUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center justify-center rounded-full border border-white/20 bg-white/5 px-5 py-3 text-base font-medium text-white transition hover:bg-white/10"
+              >
+                Visit website
+              </a>
+            </div>
+          )}
+        </div>
+      </GlowCard>
+
       <ImageModal
         src={modalImageSrc}
         alt="Project picture enlarged"

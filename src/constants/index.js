@@ -38,13 +38,26 @@ const projectData = {
   ],
 };
 
+const projectDataSecondary = {
+  title: "Waasland United",
+  shortDescription:
+    "A community-driven football club website built with HTML, JavaScript, Tailwind CSS, PostmarkApp, and Azure, focused on club news, match information, and player sign-up flows.",
+  longDescription: [
+    "I built the Waasland United website as a modern club-facing platform that brings together content, community engagement, and clear communication for supporters and players. The site is designed to feel lightweight, accessible, and easy to maintain while still providing a polished presentation.",
+    "The project combined a static frontend with dynamic interactions, using HTML, JavaScript, and Tailwind CSS for a clean responsive layout. I also integrated services like PostmarkApp for email communication and Azure for hosting and deployment support, which made the project feel closer to a real production environment than a simple mockup.",
+    "This project was a great example of building a practical website for a real-world client: balancing branding, usability, and functionality while keeping performance and maintainability in mind. It gave me valuable experience in structuring a content-heavy site and connecting frontend work with deployment and communication tools.",
+  ],
+  images: [],
+  websiteUrl: "https://www.waaslandunited.be/",
+};
+
 const words = [
   { text: "Computer Science", imgPath: "/images/ideas.svg" },
   { text: "Software development", imgPath: "/images/code.svg" },
 ];
 
 const counterItems = [
-  { value: 23, suffix: "+", label: "Years Old" },
+  { value: 24, suffix: "+", label: "Years Old" },
   { value: 2, suffix: "+", label: "Languages Spoken" },
   { value: 2026, suffix: "", label: "Graduation Year" },
 ];
@@ -314,4 +327,5 @@ export {
   techStackImgs,
   navLinks,
   projectData,
+  projectDataSecondary,
 };
